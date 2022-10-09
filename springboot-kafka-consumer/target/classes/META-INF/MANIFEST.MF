@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: cogjava2596
+Build-Jdk: 11.0.12
+Implementation-Title: springboot-kafka-consumer
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.demo
+Implementation-URL: https://spring.io/projects/spring-boot/springboot-ka
+ fka-consumer
+Created-By: Maven Integration for Eclipse
+

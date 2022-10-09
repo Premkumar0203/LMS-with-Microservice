@@ -1,0 +1,38 @@
+package com.lms.kafkaConfig;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.core.DefaultKafkaProducerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
+
+import com.lms.admin.model.EmailDetails;
+
+
+@Configuration
+public class KafkaProducerConfiguration {
+
+    @Bean
+    public ProducerFactory<String, String> producerFactory() {
+        Map<String, Object> config = new HashMap<>();
+
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put("key.serializer", 
+                "org.apache.kafka.common.serialization.StringSerializer");    
+        config.put("value.serializer", 
+                "org.apache.kafka.common.serialization.StringSerializer");
+
+        return new DefaultKafkaProducerFactory<String, String>(config);
+    }
+
+    @Bean
+    public KafkaTemplate<String, String> kafkaTemplate() {
+        return new KafkaTemplate<>(producerFactory());
+    }
+
+}
